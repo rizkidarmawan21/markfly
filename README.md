@@ -1,13 +1,14 @@
 # Markfly landing page
 
-A four-section static landing page for Markfly, the native macOS Markdown viewer.
+A static landing page for Markfly, the native macOS Markdown viewer.
 
 ## Sections
 
 1. Hero with the real Markfly app preview and latest-release download link.
 2. Product features, including Mermaid diagram, code, and split views.
-3. Three-step workflow: open, read, search or copy.
-4. macOS download callout and compact project footer.
+3. CSS-built Finder-to-Markfly opening demo.
+4. Three-step workflow: open, read, search or copy.
+5. macOS download callout and compact project footer.
 
 ## Preview locally
 
@@ -23,7 +24,7 @@ Then open `http://localhost:4173`. No build step, package manager, or runtime se
 
 `design.md` is copied byte-for-byte from the Markfly desktop app repository and is the shared visual reference. This page uses its warm cream, coral, serif display type, and dark footer. Licensed display fonts are unavailable, so the site uses local system serif and sans-serif fallbacks.
 
-`assets/source/` keeps the supplied originals unchanged. Cropped or resized copies in `assets/` power the page. The hero and feature panel use the supplied Markfly app screenshot.
+`assets/source/` keeps the supplied originals unchanged. Cropped or resized copies in `assets/` power the page. The hero and feature panel use the supplied Markfly app screenshot. Finder illustration and motion use CSS only; no runtime JavaScript or new image assets.
 
 ## Downloads
 
