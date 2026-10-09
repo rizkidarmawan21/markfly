@@ -184,6 +184,27 @@ h1, h2 {
 .feature-card h3, .steps h3 { margin: 22px 0 8px; font-size: 18px; font-weight: 580; letter-spacing: -.025em; }
 .feature-card p, .steps p { margin-bottom: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
 
+.feature-showcase {
+  display: grid;
+  grid-template-columns: minmax(250px, .75fr) minmax(0, 1.25fr);
+  align-items: stretch;
+  gap: clamp(24px, 5vw, 62px);
+  margin-top: 18px;
+  padding: clamp(24px, 4vw, 44px);
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+
+.feature-showcase-copy { align-self: center; }
+.feature-showcase-copy h3 { max-width: 320px; margin: 0 0 12px; font-family: "Iowan Old Style", "Baskerville", Georgia, serif; font-size: clamp(29px, 3.2vw, 40px); font-weight: 400; letter-spacing: -.04em; line-height: 1.1; }
+.feature-showcase-copy > p:not(.eyebrow) { max-width: 340px; margin-bottom: 20px; color: var(--muted); font-size: 14px; }
+.view-options { display: flex; flex-wrap: wrap; gap: 7px; }
+.view-options span { padding: 6px 9px; border: 1px solid var(--hairline); border-radius: 6px; background: var(--canvas); color: var(--muted); font-size: 11px; line-height: 1.2; }
+.feature-detail { position: relative; min-height: 280px; margin: 0; overflow: hidden; border: 1px solid rgb(20 20 19 / 10%); border-radius: 10px; background: var(--canvas); box-shadow: 0 14px 32px rgb(56 41 31 / 10%); }
+.feature-detail img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 58% 48%; transform: scale(1.12); }
+
 .how { padding-top: 28px; }
 .section-heading-left { max-width: none; margin: 0 0 34px; text-align: left; }
 .section-heading-left h2 { margin: 0; }
@@ -235,6 +256,8 @@ h1, h2 {
   .product-frame { border-radius: 10px 10px 0 0; }
   .feature-grid { grid-template-columns: 1fr; }
   .feature-card { min-height: 0; }
+  .feature-showcase { grid-template-columns: 1fr; gap: 24px; }
+  .feature-detail { min-height: 220px; }
   .steps { grid-template-columns: 1fr; }
   .steps li, .steps li + li { padding: 22px 0; border-left: 0; }
   .steps h3 { margin: 8px 0 4px; }
