@@ -5,6 +5,8 @@
   --muted: #67635e;
   --primary: #cc785c;
   --primary-active: #a9583e;
+  --on-dark: #faf9f5;
+  --on-dark-muted: #c2bcb2;
   --surface-soft: #f5f0e8;
   --surface-card: #efe9de;
   --surface-dark: #181715;
@@ -82,8 +84,8 @@ a:focus-visible {
 }
 
 .button:active { transform: translateY(1px); }
-.button-primary { background: var(--primary); color: #fffdf9; }
-.button-primary:hover { background: var(--primary-active); }
+.button-primary { background: var(--primary-active); color: #fffdf9; }
+.button-primary:hover { background: #914b35; }
 .button-small { min-height: 42px; padding: 0 17px; }
 .button-light { background: var(--canvas); color: var(--ink); }
 .button-light:hover { background: #fff; }
@@ -221,29 +223,32 @@ h1, h2 {
   padding: clamp(42px, 7vw, 76px) 24px;
   border-radius: 14px;
   background: var(--primary);
-  color: #fffdf9;
+  color: var(--ink);
   text-align: center;
 }
-.download-card .eyebrow { color: rgb(255 253 249 / 78%); }
+.download-card .eyebrow { color: #513226; }
 .download-card h2 { max-width: 720px; margin: 0 auto 14px; }
-.download-card > p:not(.eyebrow) { margin-bottom: 24px; color: rgb(255 253 249 / 86%); }
+.download-card > p:not(.eyebrow) { margin-bottom: 24px; color: #34221b; }
 
 .site-footer {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto auto;
   align-items: center;
   gap: 26px;
-  width: min(100%, 1240px);
+  width: calc(100% + var(--page-gutter) * 2);
   min-height: 116px;
-  margin: 20px auto 0;
-  padding: 26px 0;
-  color: var(--muted);
+  margin: clamp(42px, 7vw, 78px) calc(var(--page-gutter) * -1) 0;
+  padding: 28px var(--page-gutter) 20px;
+  background: var(--surface-dark);
+  color: var(--on-dark-muted);
   font-size: 13px;
 }
-.footer-brand img { display: block; width: 126px; height: auto; }
+.footer-brand { color: var(--on-dark); font-size: 20px; font-weight: 650; letter-spacing: -.06em; }
+.footer-brand span { color: var(--primary); }
 .site-footer p { margin: 0; }
 .site-footer nav { display: flex; gap: 20px; }
-.site-footer small { grid-column: 1 / -1; justify-self: end; color: #817c76; }
+.site-footer small { grid-column: 1 / -1; justify-self: end; color: var(--on-dark-muted); }
 
 @media (max-width: 760px) {
   .site-header { min-height: 74px; }
