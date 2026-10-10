@@ -86,7 +86,6 @@ a:focus-visible {
 .button:active { transform: translateY(1px); }
 .button-primary { background: var(--primary-active); color: #fffdf9; }
 .button-primary:hover { background: #914b35; }
-.button-small { min-height: 42px; padding: 0 17px; }
 .button-light { background: var(--canvas); color: var(--ink); }
 .button-light:hover { background: #fff; }
 
@@ -576,7 +575,6 @@ h1, h2 {
   .site-header { min-height: 74px; }
   .brand img { width: 145px; }
   .site-header nav { gap: 10px; font-size: 12px; }
-  .button-small { min-height: 40px; padding: 0 13px; }
   .hero { padding-top: 64px; }
   .hero-copy { margin-bottom: 36px; }
   .hero h1 { max-width: 600px; }
@@ -620,7 +618,6 @@ h1, h2 {
   .site-header { padding-right: 18px; padding-left: 18px; }
   .brand img { width: 112px; }
   .site-header nav { gap: 9px; font-size: 11px; }
-  .button-small { padding: 0 10px; }
   .hero-actions { flex-direction: column; gap: 16px; }
   .hero h1 { font-size: clamp(42px, 12vw, 50px); }
   .download-actions { align-items: stretch; flex-direction: column; }
