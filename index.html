@@ -28,7 +28,7 @@
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="hero-copy">
           <p class="eyebrow">A native Markdown viewer for macOS</p>
-          <h1 id="hero-title">Markdown, in a <em>clearer</em> view.</h1>
+          <h1 id="hero-title" aria-label="Markdown, in a clearer view.">Markdown, in a <span class="hero-word-rotator" aria-hidden="true"><em class="hero-word">clearer</em><em class="hero-word">cleaner</em><em class="hero-word">calmer</em><em class="hero-word">faster</em></span> view.</h1>
           <p class="hero-description">Open Markdown files from Finder and read them with rich, live rendering.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="https://github.com/rizkidarmawan21/markfly.md/releases/latest">Download for Mac <span aria-hidden="true">↗</span></a>
@@ -73,8 +73,42 @@
               <span>Diagram</span><span>Code</span><span>Diagram + code</span>
             </div>
           </div>
-          <figure class="feature-detail">
-            <img src="assets/markfly-app-preview.png" alt="Markfly showing a Mermaid diagram with its source and outline" loading="lazy">
+          <figure class="feature-detail mermaid-illustration" data-mode="diagram">
+            <figcaption class="visually-hidden">Markfly showing a Mermaid diagram and its source code side by side.</figcaption>
+            <div class="mermaid-demo-head" aria-hidden="true">
+              <span class="mermaid-demo-label">Mermaid</span>
+              <div class="mermaid-demo-modes">
+                <span class="is-active" data-demo-mode="diagram">Diagram</span>
+                <span data-demo-mode="code">Code</span>
+                <span data-demo-mode="both">Diagram + Code</span>
+              </div>
+            </div>
+            <div class="mermaid-demo-body" aria-hidden="true">
+              <div class="mermaid-diagram-pane">
+                <div class="mermaid-file-chip"><span>MD</span> project-notes.md</div>
+                <div class="mini-flow">
+                  <div class="mini-flow-row">
+                    <span class="mini-node">Markdown</span>
+                    <span class="mini-arrow">→</span>
+                    <span class="mini-node mini-node-active">Render</span>
+                  </div>
+                  <span class="mini-flow-stem"></span>
+                  <div class="mini-flow-results">
+                    <span class="mini-node">Diagram</span>
+                    <span class="mini-node">Code</span>
+                  </div>
+                </div>
+              </div>
+              <pre class="mermaid-code-pane"><code><span class="code-keyword">flowchart</span> LR
+  A[<span class="code-string">"Markdown"</span>]
+  B[<span class="code-string">"Render"</span>]
+  C[<span class="code-string">"Diagram"</span>]
+  D[<span class="code-string">"Code"</span>]
+
+  A <span class="code-arrow">--&gt;</span> B
+  B <span class="code-arrow">--&gt;</span> C
+  B <span class="code-arrow">--&gt;</span> D</code></pre>
+            </div>
           </figure>
         </div>
       </section>
@@ -104,7 +138,7 @@
               </aside>
               <div class="finder-files">
                 <div class="finder-path"><span>‹</span><span>›</span><b>Downloads</b></div>
-                <div class="finder-file-tile">
+                <div class="finder-file-tile finder-file-button">
                   <div class="markdown-file-icon"><span class="file-fold"></span><b>MD</b></div>
                   <span>Project-notes.md</span>
                 </div>
@@ -112,13 +146,22 @@
                   <div class="plain-file-icon"><span></span><span></span><span></span></div>
                   <span>Outline.txt</span>
                 </div>
+                <span class="demo-cursor" aria-hidden="true"><svg viewBox="0 0 24 30"><path d="M2 2v23l6.4-6.1 4.2 8 4-2.1-4.2-7.8H22L2 2Z" /></svg></span>
               </div>
             </div>
           </div>
 
           <div class="file-handoff" aria-hidden="true">
             <span class="handoff-label">Open with Markfly</span>
-            <span class="handoff-track"><span class="handoff-file">MD</span></span>
+            <span class="handoff-track">
+              <svg class="handoff-route" viewBox="0 0 160 112" aria-hidden="true">
+                <path class="route-line route-horizontal" d="M 8 88 C 38 25 109 20 149 67" />
+                <path class="route-arrow route-horizontal" d="M 136 64 L 150 68 L 146 54" />
+                <path class="route-line route-vertical" d="M 55 10 C 112 25 116 78 80 103" />
+                <path class="route-arrow route-vertical" d="M 84 90 L 80 104 L 94 100" />
+              </svg>
+              <span class="handoff-file">MD</span>
+            </span>
           </div>
 
           <div class="markfly-window" aria-hidden="true">
@@ -173,5 +216,62 @@
         </footer>
       </section>
     </main>
+    <script>
+      const mermaidDemo = document.querySelector('.mermaid-illustration')
+      const mermaidModes = ['diagram', 'code', 'both']
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+      if (mermaidDemo) {
+        const modeLabels = mermaidDemo.querySelectorAll('[data-demo-mode]')
+        let modeIndex = 0
+
+        const showMode = (mode) => {
+          mermaidDemo.dataset.mode = mode
+          modeLabels.forEach((label) => label.classList.toggle('is-active', label.dataset.demoMode === mode))
+        }
+
+        if (reducedMotion.matches) {
+          showMode('both')
+        } else {
+          window.setInterval(() => {
+            modeIndex = (modeIndex + 1) % mermaidModes.length
+            showMode(mermaidModes[modeIndex])
+          }, 2800)
+        }
+      }
+
+      if (!reducedMotion.matches && 'IntersectionObserver' in window) {
+        const revealGroups = [
+          ['.features > .section-heading', 'up', 0],
+          ['.feature-grid .feature-card', 'up', 90],
+          ['.feature-showcase-copy', 'left', 0],
+          ['.mermaid-illustration', 'right', 120],
+          ['.finder-demo > .section-heading', 'up', 0],
+          ['.finder-window', 'left', 0],
+          ['.file-handoff', 'up', 120],
+          ['.markfly-window', 'right', 220],
+          ['.finder-caption', 'up', 100],
+          ['.how > .section-heading', 'up', 0],
+          ['.steps li', 'up', 100],
+          ['.download-card', 'up', 0]
+        ]
+
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return
+            entry.target.classList.add('is-visible')
+            revealObserver.unobserve(entry.target)
+          })
+        }, { threshold: 0.14, rootMargin: '0px 0px -10% 0px' })
+
+        revealGroups.forEach(([selector, direction, stagger]) => {
+          document.querySelectorAll(selector).forEach((element, index) => {
+            element.classList.add('scroll-reveal', `reveal-${direction}`)
+            element.style.setProperty('--reveal-delay', `${index * stagger}ms`)
+            revealObserver.observe(element)
+          })
+        })
+      }
+    </script>
   </body>
 </html>
