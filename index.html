@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A minimal native macOS Markdown viewer. Open local files and read them with rich, live rendering.">
     <meta name="theme-color" content="#faf9f5">
-    <meta property="og:title" content="Markfly — A clearer way to read Markdown">
+    <meta property="og:title" content="Markfly | A clearer way to read Markdown">
     <meta property="og:description" content="A minimal native macOS Markdown viewer for local files, code, and Mermaid diagrams.">
-    <title>Markfly — A clearer way to read Markdown</title>
+    <title>Markfly | A clearer way to read Markdown</title>
     <link rel="icon" type="image/png" href="assets/markfly-icon.png">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -42,10 +42,17 @@
 
       <section class="features section-wrap" id="features" aria-labelledby="features-title">
         <div class="section-heading">
-          <p class="eyebrow">Made for the way you read</p>
-          <h2 id="features-title">Markdown without the friction.</h2>
-          <p>Everything you need to make a document easy to read, find, and share.</p>
+          <p class="eyebrow">Made for reading</p>
+          <h2 id="features-title">Markdown deserves its own reader.</h2>
+          <p>Open local files from Finder and read them without loading a development workspace.</p>
         </div>
+        <aside class="origin-note" aria-labelledby="origin-title">
+          <div>
+            <p class="eyebrow">Why I built Markfly</p>
+            <h3 id="origin-title">I kept opening VS Code just to read one file.</h3>
+          </div>
+          <p>I often opened VS Code for one small task: reading a Markdown file. Loading a full development workspace felt excessive, so I built Markfly as a focused, lightweight reader.</p>
+        </aside>
         <div class="feature-grid">
           <article class="feature-card">
             <span class="feature-index">01</span>
@@ -176,7 +183,7 @@
               <p class="preview-kicker">PROJECT NOTES</p>
               <h3>A little more room to think.</h3>
               <div class="preview-rule"></div>
-              <p class="preview-copy">Ideas, decisions, and next steps — all in one clear place.</p>
+              <p class="preview-copy">Ideas, decisions, and next steps in one clear place.</p>
               <h4>Today</h4>
               <div class="preview-lines"><i></i><i></i><i></i></div>
               <div class="preview-code"><span>01</span><b>const</b> notes = <em>"ready to read"</em></div>
@@ -243,6 +250,7 @@
       if (!reducedMotion.matches && 'IntersectionObserver' in window) {
         const revealGroups = [
           ['.features > .section-heading', 'up', 0],
+          ['.origin-note', 'up', 0],
           ['.feature-grid .feature-card', 'up', 90],
           ['.feature-showcase-copy', 'left', 0],
           ['.mermaid-illustration', 'right', 120],

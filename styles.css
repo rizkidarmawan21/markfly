@@ -234,6 +234,21 @@ h1, h2 {
 .section-heading h2, .download-card h2 { margin-bottom: 15px; font-size: clamp(36px, 4.6vw, 56px); line-height: 1.08; }
 .section-heading > p:last-child { margin-bottom: 0; color: var(--muted); }
 
+.origin-note {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(280px, 1.1fr);
+  align-items: end;
+  gap: clamp(32px, 7vw, 96px);
+  margin: -4px 0 46px;
+  padding: clamp(28px, 4vw, 44px) 0;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.origin-note .eyebrow { margin-bottom: 14px; }
+.origin-note h3 { max-width: 520px; margin: 0; font-family: "Iowan Old Style", "Baskerville", Georgia, serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 400; letter-spacing: -.04em; line-height: 1.12; }
+.origin-note > p { max-width: 520px; margin: 0; color: var(--muted); font-size: clamp(15px, 1.35vw, 17px); line-height: 1.75; }
+
 .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .feature-card { min-height: 214px; padding: 27px 28px; border: 1px solid var(--hairline); border-radius: 12px; background: #fffefa; transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease; }
 .card-link { display: inline-flex; gap: 8px; margin-top: 18px; color: var(--primary-active); font-size: 13px; font-weight: 600; }
@@ -572,6 +587,7 @@ h1, h2 {
   .hero-copy { margin-bottom: 36px; }
   .hero h1 { max-width: 600px; }
   .product-frame { border-radius: 10px; }
+  .origin-note { grid-template-columns: 1fr; gap: 18px; }
   .feature-grid { grid-template-columns: 1fr; }
   .feature-card { min-height: 0; }
   .feature-showcase { grid-template-columns: 1fr; gap: 24px; }
