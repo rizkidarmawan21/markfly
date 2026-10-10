@@ -29,3 +29,11 @@ Then open `http://localhost:4173`. No build step, package manager, or runtime se
 ## Downloads
 
 The call to action opens the [latest GitHub release](https://github.com/rizkidarmawan21/markfly.md/releases/latest). Current release metadata includes macOS arm64 DMG, PKG, and ZIP builds.
+
+## Install from Terminal
+
+```sh
+curl -fsSL https://rizkidarmawan21.github.io/markfly/install.sh | sh
+```
+
+The installer supports Apple silicon Macs. It downloads the latest ZIP release, verifies its SHA-512 digest, installs Markfly in `~/Applications`, and registers the app with Launch Services. It replaces an existing Markfly installation only after the new app has downloaded and extracted successfully.
