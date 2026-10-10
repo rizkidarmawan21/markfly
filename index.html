@@ -212,7 +212,18 @@
           <p>Built for macOS on Apple silicon.</p>
           <div class="download-actions">
             <a class="button button-light" href="https://github.com/rizkidarmawan21/markfly.md/releases/latest">Download for Mac <span aria-hidden="true">↗</span></a>
-            <code class="install-command"><span aria-hidden="true">$</span> curl -fsSL https://rizkidarmawan21.github.io/markfly/install.sh | sh</code>
+            <div class="install-command-wrap">
+              <code class="install-command"><span aria-hidden="true">$</span><span class="install-command-text">curl -fsSL https://rizkidarmawan21.github.io/markfly/install.sh | sh</span></code>
+              <button class="copy-command" type="button" aria-label="Copy install command" title="Copy install command" data-copy-command>
+                <svg class="copy-icon" aria-hidden="true" viewBox="0 0 20 20" fill="none">
+                  <rect x="6.5" y="6.5" width="9" height="9" rx="2"></rect>
+                  <path d="M13.5 6.5v-2a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"></path>
+                </svg>
+                <svg class="check-icon" aria-hidden="true" viewBox="0 0 20 20" fill="none">
+                  <path d="m4 10.5 3.5 3.5L16 5.5"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
         <footer class="site-footer">
@@ -230,6 +241,29 @@
       const mermaidDemo = document.querySelector('.mermaid-illustration')
       const mermaidModes = ['diagram', 'code', 'both']
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+      const copyCommand = document.querySelector('[data-copy-command]')
+
+      if (copyCommand) {
+        const command = document.querySelector('.install-command-text')?.textContent?.trim() ?? ''
+
+        copyCommand.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(command)
+            copyCommand.classList.add('is-copied')
+            copyCommand.setAttribute('aria-label', 'Install command copied')
+            copyCommand.setAttribute('title', 'Copied')
+
+            window.setTimeout(() => {
+              copyCommand.classList.remove('is-copied')
+              copyCommand.setAttribute('aria-label', 'Copy install command')
+              copyCommand.setAttribute('title', 'Copy install command')
+            }, 1800)
+          } catch {
+            copyCommand.setAttribute('aria-label', 'Copy failed')
+            copyCommand.setAttribute('title', 'Copy failed')
+          }
+        })
+      }
 
       if (mermaidDemo) {
         const modeLabels = mermaidDemo.querySelectorAll('[data-demo-mode]')

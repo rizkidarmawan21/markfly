@@ -520,8 +520,18 @@ h1, h2 {
 .download-card h2 { max-width: 720px; margin: 0 auto 14px; }
 .download-card > p:not(.eyebrow) { margin-bottom: 24px; color: #34221b; }
 .download-actions { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
-.install-command { display: inline-flex; align-items: center; min-height: 52px; max-width: 100%; padding: 0 17px; overflow-x: auto; border: 1px solid rgb(81 50 38 / 18%); border-radius: 8px; background: rgb(250 249 245 / 72%); color: #34221b; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.4; white-space: nowrap; }
+.install-command-wrap { display: inline-flex; align-items: stretch; min-width: 0; max-width: 100%; overflow: hidden; border: 1px solid rgb(81 50 38 / 18%); border-radius: 8px; background: rgb(250 249 245 / 72%); }
+.install-command { display: inline-flex; align-items: center; min-width: 0; min-height: 52px; padding: 0 17px; overflow-x: auto; color: #34221b; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.4; white-space: nowrap; }
 .install-command span { margin-right: 9px; color: var(--primary-active); font-weight: 750; }
+.install-command .install-command-text { margin-right: 0; color: inherit; font-weight: inherit; }
+.copy-command { display: inline-flex; align-items: center; justify-content: center; width: 52px; flex: 0 0 52px; padding: 0; border: 0; border-left: 1px solid rgb(81 50 38 / 14%); background: rgb(255 255 255 / 40%); color: #513226; cursor: pointer; transition: background 160ms ease, color 160ms ease; }
+.copy-command svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.5; }
+.copy-command .check-icon { display: none; }
+.copy-command:hover { background: rgb(255 255 255 / 78%); }
+.copy-command:focus-visible { outline: 2px solid var(--ink); outline-offset: -3px; }
+.copy-command.is-copied { background: #513226; color: #fffaf5; }
+.copy-command.is-copied .copy-icon { display: none; }
+.copy-command.is-copied .check-icon { display: block; }
 .download-card a:focus-visible { outline-color: var(--ink); }
 
 .site-footer {
@@ -614,7 +624,9 @@ h1, h2 {
   .hero-actions { flex-direction: column; gap: 16px; }
   .hero h1 { font-size: clamp(42px, 12vw, 50px); }
   .download-actions { align-items: stretch; flex-direction: column; }
+  .install-command-wrap { width: 100%; }
   .install-command { min-height: 48px; }
+  .copy-command { width: 48px; flex-basis: 48px; }
 }
 
 @media (max-width: 360px) {
